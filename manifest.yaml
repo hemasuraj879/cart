@@ -58,7 +58,7 @@ data:
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: catalogue
+  name: cart
   namespace: roboshop
 spec:
   scaleTargetRef:
