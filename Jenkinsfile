@@ -23,23 +23,23 @@ pipeline {
       }
     }
 
-    // stage('DEPLOY TO EKS CLUSTER') {
-    //   steps {
-    //     script {
-    //       sh """
-    //         sed -i "s|surajk879/catalogue:1.9|surajk879/${JOB_NAME}:${BUILD_NUMBER}|g" manifest.yaml
-    //         kubectl apply -f manifest.yaml
-    //       """
-    //     }
-    //   }
-    // }
-    stage('CLEAN UP'){
-        steps{
-            sh """
-                kubectl delete -f manifest.yaml
-            """
+    stage('DEPLOY TO EKS CLUSTER') {
+      steps {
+        script {
+          sh """
+            sed -i "s|surajk879/catalogue:1.9|surajk879/${JOB_NAME}:${BUILD_NUMBER}|g" manifest.yaml
+            kubectl apply -f manifest.yaml
+          """
         }
+      }
     }
+    // stage('CLEAN UP'){
+    //     steps{
+    //         sh """
+    //             kubectl delete -f manifest.yaml
+    //         """
+    //     }
+    // }
   }
 
   post {
